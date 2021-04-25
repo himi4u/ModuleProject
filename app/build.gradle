@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    //定义一个变量androidVersion，从versionInConfig中取比直接使用androidVerion.applicationId好一些
+    def androidVersion = rootProject.ext.androidVersion
+    compileSdkVersion androidVersion.compileSdkVersion
+    buildToolsVersion androidVersion.buildToolsVersion
+
+    defaultConfig {
+        applicationId androidVersion.applicationId
+        minSdkVersion androidVersion.minSdkVersion
+        targetSdkVersion androidVersion.targetSdkVersion
+        versionCode androidVersion.versionCode
+        versionName androidVersion.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //让isRelease在Java代码中可以使用
+        buildConfigField("boolean","isRelease",String.valueOf(isRelease))
+    }
+
+    buildTypes {
+        debug {
+            //配置测试服务器和正式服务器地址后需要sync+build，在编译后会根据配置生成debug放在java代码BuildConfig中使用
+            buildConfigField("String", "debug", "\"${url.debug}\"")
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "release", "\"${url.release}\"")
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    dependenciesVersion.each { k, v ->
+        implementation v
+    }
+    // 当是发布版本的时候，依赖login 、main模块
+    if(isRelease){
+        implementation project(":module_login")
+        implementation project(":module_main")
+    }else {
+        dependenciesVersion.each { k, v ->
+            implementation v
+        }
+    }
+}

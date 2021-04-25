@@ -1,0 +1,5 @@
+include ':module_login'
+include ':module_main'
+include ':app'
+include ':module_lib'
+rootProject.name = "ModuleProject"
