@@ -1,6 +1,6 @@
-if(isRelease){ //判断是否是正式环境
+if (isRelease) { //判断是否是正式环境
     apply plugin: 'com.android.library'
-}else {
+} else {
     apply plugin: 'com.android.application'
 }
 
@@ -10,7 +10,7 @@ android {
     buildToolsVersion androidVersion.buildToolsVersion
 
     defaultConfig {
-        if(!isRelease){
+        if (!isRelease) {
             applicationId appId.module_login
         }
 //        applicationId "com.himi.module_login"
@@ -23,6 +23,19 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isRelease) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'debug/**'
+                }
+            } else {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            }
         }
     }
 }

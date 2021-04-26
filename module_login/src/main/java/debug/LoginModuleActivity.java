@@ -1,16 +1,16 @@
-package com.himi.app;
+package debug;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.himi.module_login.R;
+
+public class LoginModuleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        String debugUrl = BuildConfig.debug;
-
+        setContentView(R.layout.activity_login_module);
     }
 }

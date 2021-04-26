@@ -25,5 +25,5 @@ ext {
             "release":"https://www.google.com"
     ]
     //isRelease = true 为正式环境地址
-    isRelease = false
+    isRelease = true
 }

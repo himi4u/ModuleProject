@@ -43,11 +43,12 @@ dependencies {
     }
     // 当是发布版本的时候，依赖login 、main模块
     if(isRelease){
-        implementation project(":module_login")
         implementation project(":module_main")
+        implementation project(":module_login")
     }else {
         dependenciesVersion.each { k, v ->
             implementation v
         }
     }
+    implementation project(path: ':module_lib')
 }
