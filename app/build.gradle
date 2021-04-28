@@ -38,17 +38,16 @@ dependencies {
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    dependenciesVersion.each { k, v ->
-        implementation v
-    }
+
     // 当是发布版本的时候，依赖login 、main模块
     if(isRelease){
-        implementation project(":module_main")
-        implementation project(":module_login")
+        implementation project(path: ':module_main')
+        implementation project(path: ':module_login')
     }else {
         dependenciesVersion.each { k, v ->
             implementation v
         }
     }
+    //需要BaseApplication等
     implementation project(path: ':module_lib')
 }

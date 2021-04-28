@@ -20,7 +20,6 @@
         android:text="跳转登陆注册"
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:onClick="onLogin"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
 

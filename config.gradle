@@ -9,20 +9,26 @@ ext {
             versionName      : "1.0",
     ]
     dependenciesVersion = [
-            "appcompat": 'androidx.appcompat:appcompat:1.2.0',
-            "constraintlayout" :'androidx.constraintlayout:constraintlayout:2.0.4',
-            "junit" :'junit:junit:4.12',
-            "androidxtest" :'androidx.test.ext:junit:1.1.1',
-            "androidxtestespresso" :'androidx.test.espresso:espresso-core:3.3.0',
+            "appcompat"           : 'androidx.appcompat:appcompat:1.2.0',
+            "constraintlayout"    : 'androidx.constraintlayout:constraintlayout:2.0.4',
+            "junit"               : 'junit:junit:4.12',
+            "androidxtest"        : 'androidx.test.ext:junit:1.1.1',
+            "androidxtestespresso": 'androidx.test.espresso:espresso-core:3.3.0',
     ]
     appId = [
-            module_main:"com.himi.module_main",
-            module_login:"com.himi.module_login"
+            module_main : "com.himi.module_main",
+            module_login: "com.himi.module_login"
     ]
     //正式环境测试环境服务器地址
     url = [
-            "debug":"https://www.baidu.com",
-            "release":"https://www.google.com"
+            "debug"  : "https://www.baidu.com",
+            "release": "https://www.google.com"
+    ]
+
+    deps = [
+
+            arouter_api     : "com.alibaba:arouter-api:1.5.0",
+            arouter_compiler: "com.alibaba:arouter-compiler:1.2.2"
     ]
     //isRelease = true 为正式环境地址
     isRelease = true
