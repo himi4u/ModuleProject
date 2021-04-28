@@ -37,4 +37,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     annotationProcessor deps.arouter_compiler
     api deps.multidex
+    api deps.gson
 }

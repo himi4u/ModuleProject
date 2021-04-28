@@ -4,8 +4,10 @@ import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.himi.module_lib.BaseActivity;
-import com.himi.module_lib.bean.Test;
+import com.himi.module_lib.bean.TestObject;
+import com.himi.module_lib.bean.TestParcelable;
 
 @Route(path = "/login/LoginActivity")
 public class LoginActivity extends BaseActivity {
@@ -13,15 +15,18 @@ public class LoginActivity extends BaseActivity {
 public long key1;
 @Autowired
 public int key3;
+//实现Parcelable的对象，如果实现Parcelable的对象用.withObject传递，这边就是null，一定要对应好，使用withParcelable发送实现Parcelable的对象
 @Autowired
-public Test key4;
+public TestParcelable key4;
+//普通对象
+@Autowired
+public TestObject key5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        String params = getIntent().getStringExtra("params");
-//        System.out.println("himi ========="+params);
-        System.out.println("key1:"+key1+"key3:"+key3+"key4"+key4);
+        //这个必须要加
+        ARouter.getInstance().inject(this);
+        System.out.println("key1:"+key1+"key3:"+key3+"key4"+ this.key4+"key5:"+key5);
     }
 
     /**
