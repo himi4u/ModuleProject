@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.himi.module_lib.BaseActivity;
 import com.himi.module_lib.bean.Test;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         View viewById = findViewById(R.id.btn_login);
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build("/login/LoginActivity").navigation();
             }
         });
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
     }
 
     /**

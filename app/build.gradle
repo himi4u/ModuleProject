@@ -17,16 +17,31 @@ android {
         //让isRelease在Java代码中可以使用
         buildConfigField("boolean","isRelease",String.valueOf(isRelease))
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         debug {
             //配置测试服务器和正式服务器地址后需要sync+build，在编译后会根据配置生成debug放在java代码BuildConfig中使用
             buildConfigField("String", "debug", "\"${url.debug}\"")
+
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "release", "\"${url.release}\"")
+
+            //是否zip对齐
+            zipAlignEnabled true
+            // 缩减resource文件 必须minifyEnabled true
+            shrinkResources true
+            //Proguard
+            minifyEnabled true
         }
     }
 }

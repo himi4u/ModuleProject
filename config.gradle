@@ -3,7 +3,7 @@ ext {
             compileSdkVersion: 30,
             buildToolsVersion: "30.0.0",
             applicationId    : "com.himi.app",
-            minSdkVersion    : 21,
+            minSdkVersion    : 16,
             targetSdkVersion : 30,
             versionCode      : 1,
             versionName      : "1.0",
@@ -28,7 +28,8 @@ ext {
     deps = [
 
             arouter_api     : "com.alibaba:arouter-api:1.5.0",
-            arouter_compiler: "com.alibaba:arouter-compiler:1.2.2"
+            arouter_compiler: "com.alibaba:arouter-compiler:1.2.2",
+            multidex : "androidx.multidex:multidex:2.0.1"
     ]
     //isRelease = true 为正式环境地址
     isRelease = true

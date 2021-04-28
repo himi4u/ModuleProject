@@ -18,6 +18,10 @@ allprojects {
         google()
         jcenter()
     }
+    // 组件缓存更新时间设置（默认每次build都更新）
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'minutes'
+    }
 }
 
 task clean(type: Delete) {
